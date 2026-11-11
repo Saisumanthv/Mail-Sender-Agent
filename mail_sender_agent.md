@@ -14,7 +14,16 @@
 
 ---
 
-## Step 3) Initializing React application
+### Step 3) Generate Gemini API Key
+
+1. **Access Google AI Studio:** Navigate to [aistudio.google.com](https://aistudio.google.com) and sign in with your Google account credentials.
+2. **Initiate Key Creation:** Click **Get API key** located in the bottom-left navigation sidebar.
+3. **Provision API Key:** Click **Create API key**, select or create your Google Cloud project, assign a key label, and click **Create Key**.
+4. **Secure API Key:** Copy the generated API key string (e.g., `AIzaSy...`) and store it securely for environment configuration.
+
+---
+
+## Step 4) Initializing React application
 
 - Create a new folder on the Desktop and open it with VSCode.
 - Open terminal and run command `npm create vite@latest .` (We have used ' .' here because we wanted to build the app directly inside our current folder instead of creating a nested subfolder)
@@ -29,7 +38,7 @@
 
 ---
 
-## Step 4) Setup Backend Server (Node.js & Express)
+## Step 5) Setup Backend Server (Node.js & Express)
 
 - Create a folder named 'server' in the root directory of your project
 - Navigate to 'server' folder in VSCode terminal
@@ -84,7 +93,7 @@ Security Note: Never commit your .env file to public version control (like GitHu
 
 ---
 
-## Step 5) Database configuration:
+## Step 6) Database configuration:
 
 - Now, we need to configure a database as we intended to store the existing user details and their chat history. For my application, I'm going to use Supabase as my database.
 - Run command `npm install @supabase/supabase-js` in the terminal inside 'server' directory path and you can find that Supabase package has been added to dependencies in 'package.json' file
@@ -103,7 +112,7 @@ Security Note: Never commit your .env file to public version control (like GitHu
 
 ---
 
-## Step 6) Build user interface
+## Step 7) Build user interface
 
 - Clear the predefined code in App.jsx file and just keep the boilerplate.
 - Before building the frontend, first we need to allow the frontend to read the database. To do that, open 'supabase.com > SQL Editor > and run this command there (https://medium.com/@aiwithsumanth/allow-the-frontend-anon-key-to-read-only-successfully-sent-mails-create-policy-public-read-01e8af50f313?postPublishedType=initial). Now, our frontend is allowed to fetch data from the database.
@@ -117,7 +126,7 @@ Security Note: Never commit your .env file to public version control (like GitHu
 
 ---
 
-## Step 7) Push the project to GitHub
+## Step 8) Push the project to GitHub
 
 - Before pushing this project to GitHub, first we need to secure our environment variables in .env files which includes Gemini API key, supabase URL, anon key and service role key. For that, open the .gitignore file, or create one in the root directory if it doesn't exist in your project and include your .env file in there.
 - Now, run command `git init` in the root directory path in terminal to initialize an empty git repository
@@ -131,7 +140,7 @@ Security Note: Never commit your .env file to public version control (like GitHu
 
 ---
 
-## Step 8) Deploying our application
+## Step 9) Deploying our application
 
 - Before deploying our application, we need to check if we're hardcoding any values in our project. For example, if the backend URL is hardcoded as localhost inside our frontend/backend code in 'App.jsx'/'index.js' file, it won't work when deployed. To solve this issue, create a new environment variable named as 'VITE_API_URL'/FRONTEND_URL with backend/frontend localhost URL as value in respected .env file.
 - Now, go to the 'App.jsx'/'index.js' file and replace the hardcoded frontend/backend localhost URL with the URL stored in the .env file by importing it.
@@ -143,7 +152,8 @@ Security Note: Never commit your .env file to public version control (like GitHu
 - Now, go to 'server/agent.js' file and replace the old syntax with Brevo compatible syntax.
 - Now, push the modified files to the GitHub again by using the commands described in the previous step.
 
-- **Deploy Backend (Render):** Navigate to render.com and sign in (or create an account using your GitHub credentials).
+### Deploy Backend (Render): 
+- Navigate to render.com and sign in (or create an account using your GitHub credentials).
 - Click + New in the dashboard and select Web Service.
 - Authorize your GitHub account, locate your project repository (e.g., Mail-Sender-Agent), and select it.
 - Set Language to Node as our project's backend is written in Node.
@@ -156,7 +166,6 @@ Security Note: Never commit your .env file to public version control (like GitHu
 - Scroll to the bottom of the page and click Deploy Web Service. Render will compile, build, and deploy your live backend API.
 
 ### Deploy Frontend (Vercel):
-
 - Navigate to vercel.com, click Log In / Sign Up and complete the verification
 - And now, click on Create New button and select Project option
 - And select Continue with GitHub under the Import Git Repository section. Click on Install to install the Vercel GitHub Application and complete account email verification if prompted.
